@@ -1,6 +1,3 @@
-# PROJECT NO LONGER SUPPORTED
-## As of 9.28.21 this project has been depreciated and Google Oauth verification is not supported. You can still run the tool but you need to setup your own instance of Google Oauth credentials.
-
 # PrivacyBot
 
 PrivacyBot is a simple automated service to initiate CCPA deletion requests with databrokers.
