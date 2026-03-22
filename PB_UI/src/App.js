@@ -15,6 +15,7 @@ import About from './pages/About';
 import SignUp from './pages/SignUp';
 import PageNotFound from './pages/PageNotFound';
 import InputForm from './pages/InputForm';
+import EmailProviderSelector from './utils/EmailProviderSelector';
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
 
   return (
     <>
+      <EmailProviderSelector />
       <Switch>
         <Route exact path="/">
           <Home />
