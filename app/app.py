@@ -4,6 +4,9 @@ Email logic in corefunctions.py
 """
 
 from flask import Flask, request, Response, jsonify
+from werkzeug.security import generate_password_hash, check_password_hash
+import jwt
+import datetime
 from flask_cors import CORS
 import json
 from corefunctions import csv_to_map, sendEmail, privacyAPI 
@@ -11,9 +14,65 @@ from corefunctions import csv_to_map, sendEmail, privacyAPI
 app = Flask(__name__)
 cors = CORS(app, resources={r"/privacyAPI/*": {"origins": "http://localhost:3000"}})
 
+# In-memory user storage
+users = {}
+
+# Secret key for JWT
+SECRET_KEY = 'your_secret_key_here'
+
+# User Registration
+@app.route('/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+
+    if email in users:
+        return jsonify({'message': 'User already exists'}), 400
+
+    hashed_password = generate_password_hash(password, method='sha256')
+    users[email] = hashed_password
+
+    return jsonify({'message': 'User registered successfully'}), 201
+
+# User Login
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+
+    hashed_password = users.get(email)
+    if not hashed_password or not check_password_hash(hashed_password, password):
+        return jsonify({'message': 'Invalid credentials'}), 401
+
+    token = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)}, SECRET_KEY)
+
+    return jsonify({'token': token}), 200
+
+# JWT Token Required Decorator
+def token_required(f):
+    def decorator(*args, **kwargs):
+        token = None
+        if 'x-access-tokens' in request.headers:
+            token = request.headers['x-access-tokens']
+
+        if not token:
+            return jsonify({'message': 'Token is missing!'}), 401
+
+        try:
+            data = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+            current_user = users.get(data['email'])
+        except:
+            return jsonify({'message': 'Token is invalid!'}), 401
+
+        return f(current_user, *args, **kwargs)
+    return decorator
+
 # privacyAPI - initiates CCPA data delete requests
 @app.route('/privacyAPI/v1/', methods=["POST"])
-def executePrivacyAPI():
+@token_required
+def executePrivacyAPI(current_user):
     '''
     This function runs the privacyAPI for live data brokers
     Cookie check: The cookie "live-test: true" is required to run this function
