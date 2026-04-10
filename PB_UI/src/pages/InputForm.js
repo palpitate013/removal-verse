@@ -146,7 +146,7 @@ class InputForm extends React.Component {
                               </Dropdown>
                             </li>
                           </ul>
-                          <input name="full_address" value={full_address} onChange={this.handleInputChange} id="Street" type="address" className="form-input w-full text-gray-300" placeholder="1234 Big St." />
+                          <input name="full_address" value={full_address} onChange={this.handleInputChange} id="Street" type="address" className="form-input w-full text-gray-300" placeholder="1234 Big St." aria-label="Street Address" tabindex="0" />
                         </div>
                       </div>
                       {/* city */}
