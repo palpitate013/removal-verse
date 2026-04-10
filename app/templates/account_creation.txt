@@ -1,0 +1,8 @@
+Subject: Welcome to Our Service
+
+Hello {name},
+
+Thank you for creating an account with us. We're excited to have you on board!
+
+Best regards,
+The Team
