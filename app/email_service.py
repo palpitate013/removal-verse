@@ -10,6 +10,30 @@ class EmailService:
         self.password = password
 
     def send_email(self, to_email, subject, body):
+        try:
+            # Create server object with SSL option
+            server = smtplib.SMTP_SSL(self.smtp_server, self.smtp_port)
+            server.login(self.username, self.password)
+
+            # Create the email
+            msg = MIMEMultipart()
+            msg['From'] = self.username
+            msg['To'] = to_email
+            msg['Subject'] = subject
+            msg.attach(MIMEText(body, 'plain'))
+
+            # Send the email
+            server.sendmail(self.username, to_email, msg.as_string())
+            print(f"Email sent to {to_email} with subject '{subject}'")  # Log email sending
+
+            # Log the email sending
+            with open('email_log.txt', 'a') as log_file:
+                log_file.write(f"Email sent to {to_email} with subject '{subject}'\n")
+
+            server.quit()
+        except smtplib.SMTPException as e:
+            print(f"Failed to send email to {to_email}: {str(e)}")
+            # Retry logic or additional error handling can be added here
         # Create the email
         msg = MIMEMultipart()
         msg['From'] = self.username
