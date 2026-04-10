@@ -170,7 +170,7 @@ class InputForm extends React.Component {
                       <div className="flex max-w-sm flex-wrap -mx-3 mb-4">
                           <div className="w-full px-3">
                             <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="State of residence">State of Residence <span className="text-red-600">*</span></label>
-                            <input name="state" value={state} onChange={this.handleInputChange} id="state" type="state" className="form-input w-full text-gray-300" placeholder="CA" required />
+                            <input name="state" value={state} onChange={this.handleInputChange} id="state" type="state" className="form-input w-full text-gray-300" placeholder="CA" required aria-label="State of Residence" tabindex="0" />
                           </div>
                         </div>
                       {/* zip */}
