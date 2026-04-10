@@ -16,7 +16,13 @@ function Header() {
       setMobileNavOpen(false);
     };
     document.addEventListener('click', clickHandler);
-    return () => document.removeEventListener('click', clickHandler);
+    const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    localStorage.setItem('theme', !darkMode ? 'dark' : 'light');
+    document.documentElement.classList.toggle('dark', !darkMode);
+  };
+
+  return () => document.removeEventListener('click', clickHandler);
   });
 
   // close the mobile menu if the esc key is pressed
