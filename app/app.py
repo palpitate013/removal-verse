@@ -14,6 +14,27 @@ from corefunctions import csv_to_map, sendEmail, privacyAPI
 app = Flask(__name__)
 cors = CORS(app, resources={r"/privacyAPI/*": {"origins": "http://localhost:3000"}})
 
+# In-memory user storage
+users = {}
+
+# Secret key for JWT
+SECRET_KEY = 'your_secret_key_here'
+
+# User Registration
+@app.route('/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+
+    if email in users:
+        return jsonify({'message': 'User already exists'}), 400
+
+    hashed_password = generate_password_hash(password, method='sha256')
+    users[email] = hashed_password
+
+    return jsonify({'message': 'User registered successfully'}), 201
+
 # privacyAPI - initiates CCPA data delete requests
 @app.route('/privacyAPI/v1/', methods=["POST"])
 def executePrivacyAPI():
