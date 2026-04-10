@@ -32,7 +32,7 @@ class EmailService:
 
             server.quit()
         except smtplib.SMTPException as e:
-            print(f"Failed to send email to {to_email}: {str(e)}")
+            logger.error(f"Failed to send email to {to_email}: {str(e)}")
             # Retry logic or additional error handling can be added here
         # Create the email
         msg = MIMEMultipart()
