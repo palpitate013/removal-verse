@@ -33,7 +33,17 @@ class EmailService:
             server.quit()
         except smtplib.SMTPException as e:
             logger.error(f"Failed to send email to {to_email}: {str(e)}")
-            # Retry logic or additional error handling can be added here
+            # Implement retry logic
+            retry_count = 3
+            for attempt in range(retry_count):
+                try:
+                    server.sendmail(self.username, to_email, msg.as_string())
+                    logger.info(f"Email sent to {to_email} on retry {attempt + 1}")
+                    break
+                except smtplib.SMTPException as retry_e:
+                    logger.error(f"Retry {attempt + 1} failed for {to_email}: {str(retry_e)}")
+                    if attempt == retry_count - 1:
+                        logger.error(f"All retries failed for {to_email}")
         # Create the email
         msg = MIMEMultipart()
         msg['From'] = self.username
