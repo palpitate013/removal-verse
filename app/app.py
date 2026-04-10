@@ -4,6 +4,9 @@ Email logic in corefunctions.py
 """
 
 from flask import Flask, request, Response, jsonify
+from werkzeug.security import generate_password_hash, check_password_hash
+import jwt
+import datetime
 from flask_cors import CORS
 import json
 from corefunctions import csv_to_map, sendEmail, privacyAPI 
