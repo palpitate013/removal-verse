@@ -51,6 +51,16 @@ function Header() {
             </Link>
           </div>
 
+          {/* Dark Mode Toggle */}
+          <div className="flex items-center">
+            <div className="form-switch focus-within:outline-none mr-4">
+              <input type="checkbox" id="dark-mode-toggle" className="sr-only" checked={darkMode} onChange={toggleDarkMode} />
+              <label htmlFor="dark-mode-toggle" className="bg-gray-700">
+                <span className="bg-white shadow-sm" aria-hidden="true"></span>
+              </label>
+            </div>
+          </div>
+
           {/* Desktop navigation */}
           <nav className="hidden md:flex md:flex-grow">
 
