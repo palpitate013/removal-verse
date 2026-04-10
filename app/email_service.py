@@ -24,7 +24,7 @@ class EmailService:
 
             # Send the email
             server.sendmail(self.username, to_email, msg.as_string())
-            print(f"Email sent to {to_email} with subject '{subject}'")  # Log email sending
+            logger.info(f"Email sent to {to_email} with subject '{subject}'")  # Log email sending
 
             # Log the email sending
             with open('email_log.txt', 'a') as log_file:
