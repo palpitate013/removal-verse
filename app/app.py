@@ -32,6 +32,26 @@ def executePrivacyAPI():
         "return": privacyAPI(usrjson, services)
     }), 200
 
+# Account creation endpoint
+@app.route('/account/create', methods=['POST'])
+def create_account():
+    data = request.get_json()
+    user_email = data.get('email')
+    user_name = data.get('name')
+    # Here you would typically add logic to create the user account in your database
+    # For now, we'll just simulate this with a print statement
+    print(f"Creating account for {user_name} with email {user_email}")
+    
+    # Send welcome email
+    from email_service import EmailService
+    from email_templates import ACCOUNT_CREATION_TEMPLATE
+    
+    email_service = EmailService('smtp.example.com', 465, 'your_email@example.com', 'your_password')
+    email_body = ACCOUNT_CREATION_TEMPLATE.format(name=user_name)
+    email_service.send_email(user_email, 'Welcome to Our Service', email_body)
+    
+    return jsonify({'message': 'Account created and email sent'}), 201
+
 # Run Server
 if __name__ == '__main__':
     app.run(debug=True)

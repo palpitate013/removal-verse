@@ -47,7 +47,7 @@ def createLabel(service):
             if label["name"] == "PrivacyBot":
                 label_id = label["id"]
                 create_label = False
-                print("Label PrivacyBot with id %s already exists. Using the same label for the mails being sent..." % label_id)
+                logger.info("Label PrivacyBot with id %s already exists. Using the same label for the mails being sent..." % label_id)
                 break
         else:
             create_label = True
@@ -165,7 +165,8 @@ def sendEmail(usrjson, services_map):
             message = gmail_service.users().messages().send(userId='me', body={'raw': raw_string}).execute()
             message_id = message['id']
             label_msg = gmail_service.users().messages().modify(userId='me', id=message_id, body={"addLabelIds":[label_id,]}).execute()
-        except:
+        except Exception as e:
+            logger.error(f"Failed to send email to {service}: {str(e)}")
             print("Email could not be sent to", service)
             email_notsent = True
     
