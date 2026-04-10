@@ -1,6 +1,16 @@
 # Email templates for different notifications
 
-ACCOUNT_CREATION_TEMPLATE = '''
+def load_template(template_name):
+    """Load an email template from a file."""
+    try:
+        with open(f'templates/{template_name}.txt', 'r') as file:
+            return file.read()
+    except FileNotFoundError:
+        print(f"Template {template_name} not found.")
+        return ""
+
+
+ACCOUNT_CREATION_TEMPLATE = load_template('account_creation')
 Subject: Welcome to Our Service
 
 Hello {name},
