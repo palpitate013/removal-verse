@@ -5,6 +5,7 @@ import Dropdown from '../utils/Dropdown';
 function Header() {
 
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark');
 
   const mobileNav = useRef(null);
 
