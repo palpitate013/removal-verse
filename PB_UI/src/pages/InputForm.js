@@ -238,7 +238,7 @@ class InputForm extends React.Component {
                               </li>
                             </ul>
                             {/* <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="Age">Age </label> */}
-                            <input name="age" value={age} onChange={this.handleInputChange} id="age" type="age" className="form-input w-full text-gray-300" placeholder="29" />
+                            <input name="age" value={age} onChange={this.handleInputChange} id="age" type="age" className="form-input w-full text-gray-300" placeholder="29" aria-label="Age" tabindex="0" />
                           </div>
                       </div>
                       {/* phone_num */}
