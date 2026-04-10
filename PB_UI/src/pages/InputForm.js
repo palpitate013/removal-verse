@@ -221,7 +221,7 @@ class InputForm extends React.Component {
                                 </li>
                               </ul>
                               {/* <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="Date of Birth">Date of Birth </label> */}
-                              <input name="dob" value={dob} onChange={this.handleInputChange} id="date of birth" type="date of birth" className="form-input w-full text-gray-300" placeholder="MM/DD/YYYY" />
+                              <input name="dob" value={dob} onChange={this.handleInputChange} id="date of birth" type="date of birth" className="form-input w-full text-gray-300" placeholder="MM/DD/YYYY" aria-label="Date of Birth" tabindex="0" />
                             </div>
                         </div>
                       {/* age */}
