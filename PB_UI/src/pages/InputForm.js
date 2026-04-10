@@ -129,7 +129,7 @@ class InputForm extends React.Component {
                       <div className="flex max-w-sm flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                           <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="email">Email <span className="text-red-600">*</span></label>
-                          <input name="email" value={email} onChange={this.handleInputChange} id="email" type="email" className="form-input w-full text-gray-300" placeholder="your.email@gmail.com" required />
+                          <input name="email" value={email} onChange={this.handleInputChange} id="email" type="email" className="form-input w-full text-gray-300" placeholder="your.email@gmail.com" required aria-label="Email" tabindex="0" />
                         </div>
                       </div>
                       {/* full_address */}
