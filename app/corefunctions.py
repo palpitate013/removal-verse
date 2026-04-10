@@ -47,7 +47,7 @@ def createLabel(service):
             if label["name"] == "PrivacyBot":
                 label_id = label["id"]
                 create_label = False
-                print("Label PrivacyBot with id %s already exists. Using the same label for the mails being sent..." % label_id)
+                logger.info("Label PrivacyBot with id %s already exists. Using the same label for the mails being sent..." % label_id)
                 break
         else:
             create_label = True
