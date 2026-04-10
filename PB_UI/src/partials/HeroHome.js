@@ -6,7 +6,7 @@ function HeroHome() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
 
   return (
-    <section>
+    <section className="container">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
 
         {/* Illustration behind hero content */}
