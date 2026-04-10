@@ -2,6 +2,27 @@
 Convert CSV to Dictionary, Write and Send Emails.
 """
 
+from email_service import EmailService
+from email_templates import load_template
+
+# Initialize the email service
+email_service = EmailService('smtp.example.com', 465, 'your_email@example.com', 'your_password')
+
+
+def notify_account_creation(user_email, user_name):
+    """Send an account creation notification email."""
+    subject = "Welcome to Our Service"
+    body = load_template('account_creation').format(name=user_name)
+    email_service.send_email(user_email, subject, body)
+
+
+def notify_password_reset(user_email, user_name, reset_link):
+    """Send a password reset notification email."""
+    subject = "Password Reset Request"
+    body = load_template('password_reset').format(name=user_name, reset_link=reset_link)
+    email_service.send_email(user_email, subject, body)
+
+
 import csv, os, glob
 from Google import Create_Service
 import base64
