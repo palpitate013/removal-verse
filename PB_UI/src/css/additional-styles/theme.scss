@@ -54,6 +54,16 @@ button:focus,
     }
 }
 
+// Dark mode styles
+body.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+header.dark {
+  background-color: #1e1e1e;
+}
+
 // Pulsing animation
 @keyframes pulseLoop {
     0% { opacity: 0; transform: scale(0.1) translateZ(0); }

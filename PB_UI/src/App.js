@@ -22,6 +22,13 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
+  useEffect(() => {
     AOS.init({
       once: true,
       disable: 'phone',
