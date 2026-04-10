@@ -163,7 +163,7 @@ class InputForm extends React.Component {
                               </li>
                             </ul>
                             {/* <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="City of residence">City of Residence </label> */}
-                            <input name="city" value={city} onChange={this.handleInputChange} id="city" type="city" className="form-input w-full text-gray-300" placeholder="Berkeley" />
+                            <input name="city" value={city} onChange={this.handleInputChange} id="city" type="city" className="form-input w-full text-gray-300" placeholder="Berkeley" aria-label="City of Residence" tabindex="0" />
                           </div>
                       </div>
                       {/* state */}
