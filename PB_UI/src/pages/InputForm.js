@@ -187,7 +187,7 @@ class InputForm extends React.Component {
                                 </li>
                               </ul>
                               {/* <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="Zip Code">Zip Code </label> */}
-                              <input name="zip" value={zip} onChange={this.handleInputChange} id="zip code" type="zip code" className="form-input w-full text-gray-300" placeholder="12345" />
+                              <input name="zip" value={zip} onChange={this.handleInputChange} id="zip code" type="zip code" className="form-input w-full text-gray-300" placeholder="12345" aria-label="Zip Code" tabindex="0" />
                             </div>
                         </div>
                       {/* country */}
