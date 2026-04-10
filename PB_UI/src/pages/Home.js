@@ -15,7 +15,7 @@ function Home() {
       {/*<Header />*/}
 
       {/*  Page content */}
-      <main className="flex-grow">
+      <main className="flex-grow container">
 
         {/*  Page illustration */}
         <div className="relative max-w-6xl mx-auto h-0 pointer-events-none" aria-hidden="true">
