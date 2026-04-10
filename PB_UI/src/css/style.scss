@@ -26,3 +26,30 @@
 // AOS styles
 $aos-distance: 10px;
 @import 'node_modules/aos/src/sass/aos.scss';
+
+// Accessibility improvements
+:focus {
+    outline: 2px solid #4A90E2; /* Ensure focus is visible */
+    outline-offset: 2px;
+}
+
+body {
+    color: #333; /* Ensure text color contrast */
+    background-color: #fff; /* Ensure background color contrast */
+}
+
+.text-gray-300 {
+    color: #4A4A4A; /* Improve text contrast */
+}
+
+.text-gray-400 {
+    color: #7F8C8D; /* Improve text contrast */
+}
+
+.border-gray-700 {
+    border-color: #2C3E50; /* Improve border contrast */
+}
+
+.text-red-600 {
+    color: #E74C3C; /* Ensure error text is visible */
+}

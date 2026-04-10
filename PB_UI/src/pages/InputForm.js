@@ -115,21 +115,21 @@ class InputForm extends React.Component {
                       <div className="flex max-w-sm flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                           <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="first-name">First Name <span className="text-red-600">*</span></label>
-                          <input name="firstname" value={firstname} onChange={this.handleInputChange} id="first-name" type="text" className="form-input w-full text-gray-300" placeholder="First name" required />
+                          <input name="firstname" value={firstname} onChange={this.handleInputChange} id="first-name" type="text" className="form-input w-full text-gray-300" placeholder="First name" required aria-label="First Name" tabindex="0" />
                         </div>
                       </div>
                       {/* lastname */}
                       <div className="flex max-w-sm flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                           <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="last-name">Last Name <span className="text-red-600">*</span></label>
-                          <input name="lastname" value={lastname} onChange={this.handleInputChange} id="last-name" type="text" className="form-input w-full text-gray-300" placeholder="Last name" required />
+                          <input name="lastname" value={lastname} onChange={this.handleInputChange} id="last-name" type="text" className="form-input w-full text-gray-300" placeholder="Last name" required aria-label="Last Name" tabindex="0" />
                         </div>
                       </div>
                       {/* email */}
                       <div className="flex max-w-sm flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                           <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="email">Email <span className="text-red-600">*</span></label>
-                          <input name="email" value={email} onChange={this.handleInputChange} id="email" type="email" className="form-input w-full text-gray-300" placeholder="your.email@gmail.com" required />
+                          <input name="email" value={email} onChange={this.handleInputChange} id="email" type="email" className="form-input w-full text-gray-300" placeholder="your.email@gmail.com" required aria-label="Email" tabindex="0" />
                         </div>
                       </div>
                       {/* full_address */}
@@ -146,7 +146,7 @@ class InputForm extends React.Component {
                               </Dropdown>
                             </li>
                           </ul>
-                          <input name="full_address" value={full_address} onChange={this.handleInputChange} id="Street" type="address" className="form-input w-full text-gray-300" placeholder="1234 Big St." />
+                          <input name="full_address" value={full_address} onChange={this.handleInputChange} id="Street" type="address" className="form-input w-full text-gray-300" placeholder="1234 Big St." aria-label="Street Address" tabindex="0" />
                         </div>
                       </div>
                       {/* city */}
@@ -163,14 +163,14 @@ class InputForm extends React.Component {
                               </li>
                             </ul>
                             {/* <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="City of residence">City of Residence </label> */}
-                            <input name="city" value={city} onChange={this.handleInputChange} id="city" type="city" className="form-input w-full text-gray-300" placeholder="Berkeley" />
+                            <input name="city" value={city} onChange={this.handleInputChange} id="city" type="city" className="form-input w-full text-gray-300" placeholder="Berkeley" aria-label="City of Residence" tabindex="0" />
                           </div>
                       </div>
                       {/* state */}
                       <div className="flex max-w-sm flex-wrap -mx-3 mb-4">
                           <div className="w-full px-3">
                             <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="State of residence">State of Residence <span className="text-red-600">*</span></label>
-                            <input name="state" value={state} onChange={this.handleInputChange} id="state" type="state" className="form-input w-full text-gray-300" placeholder="CA" required />
+                            <input name="state" value={state} onChange={this.handleInputChange} id="state" type="state" className="form-input w-full text-gray-300" placeholder="CA" required aria-label="State of Residence" tabindex="0" />
                           </div>
                         </div>
                       {/* zip */}
@@ -187,7 +187,7 @@ class InputForm extends React.Component {
                                 </li>
                               </ul>
                               {/* <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="Zip Code">Zip Code </label> */}
-                              <input name="zip" value={zip} onChange={this.handleInputChange} id="zip code" type="zip code" className="form-input w-full text-gray-300" placeholder="12345" />
+                              <input name="zip" value={zip} onChange={this.handleInputChange} id="zip code" type="zip code" className="form-input w-full text-gray-300" placeholder="12345" aria-label="Zip Code" tabindex="0" />
                             </div>
                         </div>
                       {/* country */}
@@ -204,7 +204,7 @@ class InputForm extends React.Component {
                               </li>
                             </ul>
                             {/* <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="Country">Country </label> */}
-                            <input name="country" value={country} onChange={this.handleInputChange} id="country" type="country" className="form-input w-full text-gray-300" placeholder="USA" />
+                            <input name="country" value={country} onChange={this.handleInputChange} id="country" type="country" className="form-input w-full text-gray-300" placeholder="USA" aria-label="Country" tabindex="0" />
                           </div>
                       </div>
                       {/* dob */}
@@ -221,7 +221,7 @@ class InputForm extends React.Component {
                                 </li>
                               </ul>
                               {/* <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="Date of Birth">Date of Birth </label> */}
-                              <input name="dob" value={dob} onChange={this.handleInputChange} id="date of birth" type="date of birth" className="form-input w-full text-gray-300" placeholder="MM/DD/YYYY" />
+                              <input name="dob" value={dob} onChange={this.handleInputChange} id="date of birth" type="date of birth" className="form-input w-full text-gray-300" placeholder="MM/DD/YYYY" aria-label="Date of Birth" tabindex="0" />
                             </div>
                         </div>
                       {/* age */}
@@ -238,7 +238,7 @@ class InputForm extends React.Component {
                               </li>
                             </ul>
                             {/* <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="Age">Age </label> */}
-                            <input name="age" value={age} onChange={this.handleInputChange} id="age" type="age" className="form-input w-full text-gray-300" placeholder="29" />
+                            <input name="age" value={age} onChange={this.handleInputChange} id="age" type="age" className="form-input w-full text-gray-300" placeholder="29" aria-label="Age" tabindex="0" />
                           </div>
                       </div>
                       {/* phone_num */}
