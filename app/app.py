@@ -35,6 +35,21 @@ def register():
 
     return jsonify({'message': 'User registered successfully'}), 201
 
+# User Login
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+
+    hashed_password = users.get(email)
+    if not hashed_password or not check_password_hash(hashed_password, password):
+        return jsonify({'message': 'Invalid credentials'}), 401
+
+    token = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)}, SECRET_KEY)
+
+    return jsonify({'token': token}), 200
+
 # privacyAPI - initiates CCPA data delete requests
 @app.route('/privacyAPI/v1/', methods=["POST"])
 def executePrivacyAPI():
