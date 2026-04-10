@@ -115,7 +115,7 @@ class InputForm extends React.Component {
                       <div className="flex max-w-sm flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                           <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="first-name">First Name <span className="text-red-600">*</span></label>
-                          <input name="firstname" value={firstname} onChange={this.handleInputChange} id="first-name" type="text" className="form-input w-full text-gray-300" placeholder="First name" required />
+                          <input name="firstname" value={firstname} onChange={this.handleInputChange} id="first-name" type="text" className="form-input w-full text-gray-300" placeholder="First name" required aria-label="First Name" tabindex="0" />
                         </div>
                       </div>
                       {/* lastname */}
