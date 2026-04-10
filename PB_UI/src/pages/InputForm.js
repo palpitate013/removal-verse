@@ -204,7 +204,7 @@ class InputForm extends React.Component {
                               </li>
                             </ul>
                             {/* <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="Country">Country </label> */}
-                            <input name="country" value={country} onChange={this.handleInputChange} id="country" type="country" className="form-input w-full text-gray-300" placeholder="USA" />
+                            <input name="country" value={country} onChange={this.handleInputChange} id="country" type="country" className="form-input w-full text-gray-300" placeholder="USA" aria-label="Country" tabindex="0" />
                           </div>
                       </div>
                       {/* dob */}
