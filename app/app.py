@@ -71,7 +71,8 @@ def token_required(f):
 
 # privacyAPI - initiates CCPA data delete requests
 @app.route('/privacyAPI/v1/', methods=["POST"])
-def executePrivacyAPI():
+@token_required
+def executePrivacyAPI(current_user):
     '''
     This function runs the privacyAPI for live data brokers
     Cookie check: The cookie "live-test: true" is required to run this function
