@@ -25,6 +25,7 @@ class EmailService:
         # Perform operations via server
         server.login(self.username, self.password)
         server.sendmail(self.username, to_email, msg.as_string())
+        print(f"Email sent to {to_email} with subject '{subject}'")  # Log email sending
         server.quit()
 
 # Example usage:
