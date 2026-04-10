@@ -50,6 +50,25 @@ def login():
 
     return jsonify({'token': token}), 200
 
+# JWT Token Required Decorator
+def token_required(f):
+    def decorator(*args, **kwargs):
+        token = None
+        if 'x-access-tokens' in request.headers:
+            token = request.headers['x-access-tokens']
+
+        if not token:
+            return jsonify({'message': 'Token is missing!'}), 401
+
+        try:
+            data = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+            current_user = users.get(data['email'])
+        except:
+            return jsonify({'message': 'Token is invalid!'}), 401
+
+        return f(current_user, *args, **kwargs)
+    return decorator
+
 # privacyAPI - initiates CCPA data delete requests
 @app.route('/privacyAPI/v1/', methods=["POST"])
 def executePrivacyAPI():
