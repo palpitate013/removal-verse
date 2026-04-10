@@ -14,6 +14,7 @@ def notify_account_creation(user_email, user_name):
     subject = "Welcome to Our Service"
     body = load_template('account_creation').format(name=user_name)
     email_service.send_email(user_email, subject, body)
+    logger.info(f"Account creation email sent to {user_email}")
 
 
 def notify_password_reset(user_email, user_name, reset_link):
