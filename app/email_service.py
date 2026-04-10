@@ -26,7 +26,13 @@ class EmailService:
             server.sendmail(self.username, to_email, msg.as_string())
             logger.info(f"Email sent to {to_email} with subject '{subject}'")  # Log email sending
 
-            # Log the email sending
+            # Log the email sending to a dedicated log file
+            logger = logging.getLogger('EmailLogger')
+            handler = logging.FileHandler('email_log.txt')
+            formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+            handler.setFormatter(formatter)
+            logger.addHandler(handler)
+            logger.setLevel(logging.INFO)
             with open('email_log.txt', 'a') as log_file:
                 log_file.write(f"Email sent to {to_email} with subject '{subject}'\n")
 
