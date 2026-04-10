@@ -6,7 +6,8 @@ def load_template(template_name):
         with open(f'templates/{template_name}.txt', 'r') as file:
             return file.read()
     except FileNotFoundError:
-        print(f"Template {template_name} not found.")
+        logger = logging.getLogger('EmailTemplateLogger')
+        logger.error(f"Template {template_name} not found.")
         return ""
 
 
